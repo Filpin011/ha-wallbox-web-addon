@@ -1,0 +1,55 @@
+# Wallbox WEB – Home Assistant add-on ("app"). Reference:
+# https://contributors.home-assistant.io/apps/reference/configuration/
+name: Wallbox WEB
+# set by the release pipeline of the app (image tag = version)
+version: "1.4.0"
+slug: wallbox_web
+description: >-
+  Unofficial web app for compatible wallboxes on your local network: status, charging, schedules,
+  history and costs, in the Home Assistant sidebar. Not affiliated with SCAME PARRE S.p.A.
+url: https://github.com/Filpin011/ha-wallbox-web-addon
+arch:
+  - aarch64
+  - amd64
+# prebuilt multi-arch image (Docker picks the architecture from the manifest); no build on the device
+image: ghcr.io/filpin011/wallbox-web-addon
+startup: application
+boot: auto
+# The image has no s6-overlay: keep Docker's init (tini as PID 1, reaps zombies and forwards signals).
+init: true
+# The wallboxes announce themselves with UDP broadcasts on port 4023 and are reached on TCP 333 in the LAN:
+# broadcasts only arrive on the host network.
+host_network: true
+ingress: true
+# 0 = the Supervisor picks a free port (62000-65500); the add-on reads it from the Supervisor API.
+ingress_port: 0
+panel_icon: mdi:ev-station
+panel_title: Wallbox
+panel_admin: true
+# Direct access in the LAN (normal login, PWA on the phone, API for the Home Assistant integration).
+ports:
+  8423/tcp: 8423
+webui: "http://[HOST]:[PORT:8423]/"
+watchdog: "http://[HOST]:[PORT:8423]/api/health"
+# Supervisor API: own info (ingress path / ports), network info, discovery.
+hassio_api: true
+# Core websocket through the Supervisor: which Home Assistant users are administrators (app roles).
+homeassistant_api: true
+discovery:
+  - wallbox_web
+# Users, sessions, tokens, costs and charge curves are SQLite databases in /data: a cold backup stops the
+# add-on for a few seconds so the copy is consistent.
+backup: cold
+backup_exclude:
+  - "firmware"
+options:
+  log_level: info
+  ha_admin_sync: true
+  reset_admin_password: false
+schema:
+  log_level: list(debug|info|warning|error)
+  app_url: url?
+  trusted_origins: str?
+  discovery_static: str?
+  ha_admin_sync: bool
+  reset_admin_password: bool

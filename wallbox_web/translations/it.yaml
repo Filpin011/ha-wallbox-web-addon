@@ -1,0 +1,30 @@
+configuration:
+  log_level:
+    name: Livello di log
+    description: Quanto dettaglio scrivere nel log dell'add-on ("debug" registra anche il traffico Modbus).
+  app_url:
+    name: Indirizzo della web app
+    description: >-
+      Indirizzo con cui apri Wallbox WEB fuori dalla barra laterale di Home Assistant, es.
+      http://192.168.1.10:8423 o il tuo indirizzo https dietro un reverse proxy. Vuoto = http://<IP di Home
+      Assistant>:<porta>. Le passkey funzionano solo su un indirizzo https.
+  trusted_origins:
+    name: Altri indirizzi
+    description: Altri indirizzi (separati da virgola) da cui è consentito l'accesso, es. http://homeassistant.local:8423.
+  discovery_static:
+    name: Colonnine fuori da questa rete
+    description: >-
+      Colonnine che non si trovano da sole (altra sottorete, VPN): "ip" o "ip:porta" separati da virgola, es.
+      192.168.20.15,10.0.0.7:333.
+  ha_admin_sync:
+    name: Amministratori di Home Assistant = amministratori dell'app
+    description: >-
+      Chi apre l'app dalla barra laterale entra automaticamente con il proprio utente Home Assistant. Se attivo,
+      gli amministratori di Home Assistant hanno il ruolo di amministratore nell'app, gli altri il ruolo normale.
+  reset_admin_password:
+    name: Reimposta la password dell'amministratore
+    description: >-
+      Al prossimo avvio viene stampata nel log una nuova password per "root". Disattivalo subito dopo il riavvio,
+      altrimenti la password cambia a ogni avvio.
+network:
+  8423/tcp: Web app nella rete locale (accesso, app sul telefono, API per l'integrazione Home Assistant)

@@ -1,0 +1,37 @@
+# Lints the add-on (config.yaml schema, translations, images) and checks that the image of the configured
+# version is published. Same linter as home-assistant/apps-example and esphome/home-assistant-addon.
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Add-on linter
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: frenck/action-addon-linter@v2
+        with:
+          path: ./wallbox_web
+
+  image:
+    name: Image of the configured version exists
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker manifest inspect <image>:<version>
+        run: |
+          image=$(sed -nE 's/^image: *"?([^"#]+)"?.*/\1/p' wallbox_web/config.yaml | tr -d " ")
+          version=$(sed -nE 's/^version: *"?([^"#]+)"?.*/\1/p' wallbox_web/config.yaml | tr -d " ")
+          echo "checking ${image}:${version}"
+          docker manifest inspect "${image}:${version}" > manifest.json
+          for arch in amd64 arm64; do grep -q "\"architecture\": \"${arch}\"" manifest.json || { echo "missing ${arch}"; exit 1; }; done
