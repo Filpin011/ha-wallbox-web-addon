@@ -1,49 +1,47 @@
-# Wallbox WEB – add-on per Home Assistant (non ufficiale)
+# Wallbox WEB – Home Assistant add-on (unofficial)
 
-[![Aggiungi il repository a Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FFilpin011%2Fha-wallbox-web-addon)
+🇮🇹 [Italiano](README.it.md)
 
-> **Progetto indipendente e non ufficiale.** Non affiliato, approvato, sponsorizzato né supportato da
-> SCAME PARRE S.p.A. Nasce da uno studio di come l'app e le wallbox comunicano sulla rete locale
-> (interoperabilità), non usa loghi Scame. Software fornito senza garanzia: lo usi a tuo rischio. Gli interventi
-> elettrici vanno eseguiti secondo le norme da un installatore qualificato. Leggi [DISCLAIMER.md](DISCLAIMER.md).
+[![Add the repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FFilpin011%2Fha-wallbox-web-addon)
 
-Questo repository contiene l'add-on **Wallbox WEB** per Home Assistant OS / Supervised: la web app per
-configurare e monitorare le wallbox compatibili nella rete di casa, direttamente nella barra laterale di Home
-Assistant.
+> **Independent, unofficial project.** Not affiliated with, endorsed, sponsored or supported by SCAME PARRE S.p.A.
+> It comes from a study of how the app and the wallboxes communicate on the local network (interoperability) and
+> uses no Scame logos. Software provided without warranty: use it at your own risk. Electrical work must be done
+> by a qualified installer according to local regulations. Read [DISCLAIMER.md](DISCLAIMER.md).
 
-| Add-on | Descrizione |
+This repository contains the **Wallbox WEB** add-on for Home Assistant OS / Supervised: the web app to configure
+and monitor compatible wallboxes on your home network, right in the Home Assistant sidebar.
+
+| Add-on | Description |
 |---|---|
-| [Wallbox WEB](wallbox_web) | Web app nella barra laterale (accesso automatico con l'utente Home Assistant), colonnine trovate da sole sulla rete dell'host, integrazione Home Assistant rilevata automaticamente. |
+| [Wallbox WEB](wallbox_web) | Web app in the sidebar (automatic sign-in with your Home Assistant user), stations discovered automatically on the host network, Home Assistant integration discovered automatically. |
 
-## Installazione
+The add-on's options follow your Home Assistant language (**English** by default, **Italian** available); the
+*Documentation* tab is in English with an Italian section at the end.
 
-1. Premi il pulsante qui sopra (oppure *Impostazioni › Componenti aggiuntivi › Raccolta di componenti
-   aggiuntivi › ⋮ › Repository* e incolla `https://github.com/Filpin011/ha-wallbox-web-addon`).
-2. Installa **Wallbox WEB**, attiva *Mostra nella barra laterale* e *Watchdog*, avvia.
-3. Apri **Wallbox** nella barra laterale. La documentazione completa è nella scheda *Documentazione*
-   dell'add-on ([wallbox_web/DOCS.md](wallbox_web/DOCS.md)).
+## Installation
 
-Requisiti: Home Assistant OS o Supervised, processore **amd64** o **aarch64** (es. Raspberry Pi 4/5 a 64 bit,
+1. Press the button above (or *Settings › Add-ons › Add-on store › ⋮ › Repositories* and paste
+   `https://github.com/Filpin011/ha-wallbox-web-addon`).
+2. Install **Wallbox WEB**, enable *Show in sidebar* and *Watchdog*, start it.
+3. Open **Wallbox** in the sidebar. The full documentation is in the add-on's *Documentation* tab
+   ([wallbox_web/DOCS.md](wallbox_web/DOCS.md)).
+4. Optional: install the [Wallbox WEB integration](https://github.com/Filpin011/ha-wallbox-web) (HACS) – Home
+   Assistant then offers it under *Settings › Devices & services › Discovered* – and the
+   [dashboard card](https://github.com/Filpin011/wallbox-web-card).
+
+Requirements: Home Assistant OS or Supervised, **amd64** or **aarch64** processor (e.g. 64-bit Raspberry Pi 4/5,
 Home Assistant Green/Yellow, mini PC).
 
----
+## Troubleshooting
 
-## English
-
-**Independent, unofficial project** – not affiliated with, endorsed, sponsored or supported by SCAME PARRE S.p.A.
-It is based on a study of how the app and the wallboxes communicate on the local network (interoperability) and
-uses no Scame logos. No warranty, use at your own risk; electrical work must be done by a qualified installer
-according to local regulations. See [DISCLAIMER.md](DISCLAIMER.md).
-
-This repository provides the **Wallbox WEB** add-on for Home Assistant OS / Supervised: the web app for
-compatible wallboxes on your network, in the Home Assistant sidebar, with automatic sign-in of Home Assistant
-users, station discovery on the host network and automatic discovery of the Wallbox WEB integration. Click the
-button above to add the repository, install **Wallbox WEB**, enable *Show in sidebar* and *Watchdog*, start it.
-Supported architectures: amd64, aarch64.
+See *Known issues* in the add-on's *Documentation* tab ([wallbox_web/DOCS.md](wallbox_web/DOCS.md#known-issues)).
+For bugs, open an issue with the add-on log (Settings › Add-ons › Wallbox WEB › *Log*); never paste tokens or
+passwords.
 
 ---
 
-## Per i manutentori / For maintainers
+## For maintainers
 
 How this repository works and why (compared with large add-on projects):
 
