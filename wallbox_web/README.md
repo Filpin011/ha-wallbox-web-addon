@@ -1,17 +1,14 @@
-# Wallbox WEB (add-on Home Assistant)
+# Wallbox WEB (Home Assistant add-on)
 
-![Architetture][aarch64-shield] ![Architetture][amd64-shield]
+![Supports aarch64][aarch64-shield] ![Supports amd64][amd64-shield]
 
-Web app non ufficiale per le wallbox compatibili nella rete di casa, nella barra laterale di Home Assistant:
-stato, ricarica, programmazioni, storico, costi e curve di ricarica. Accesso automatico con l'utente Home
-Assistant, colonnine trovate da sole, integrazione Home Assistant configurata automaticamente.
+Unofficial web app for compatible wallboxes on your home network, in the Home Assistant sidebar: status,
+charging, schedules, history, costs and charge curves. Automatic sign-in with your Home Assistant user, stations
+discovered automatically, Home Assistant integration set up automatically.
 
-*Unofficial web app for compatible wallboxes on the local network, in the Home Assistant sidebar.*
+> Not affiliated with, endorsed or supported by SCAME PARRE S.p.A. No warranty, use at your own risk.
 
-> Non affiliato, approvato né supportato da SCAME PARRE S.p.A. Nessuna garanzia, uso a proprio rischio.
-> *Not affiliated with SCAME PARRE S.p.A. No warranty, use at your own risk.*
-
-Documentazione completa nella scheda **Documentazione** dell'add-on.
+Full documentation in the add-on's **Documentation** tab (English, with an Italian section).
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
