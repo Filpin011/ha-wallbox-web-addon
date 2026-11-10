@@ -13,10 +13,7 @@ arch:
   - amd64
 # prebuilt multi-arch image (Docker picks the architecture from the manifest); no build on the device
 image: ghcr.io/filpin011/wallbox-web-addon
-startup: application
-boot: auto
-# The image has no s6-overlay: keep Docker's init (tini as PID 1, reaps zombies and forwards signals).
-init: true
+# startup: application, boot: auto and init: true (Docker's init as PID 1 – the image has no s6-overlay) are the defaults
 # The wallboxes announce themselves with UDP broadcasts on port 4023 and are reached on TCP 333 in the LAN:
 # broadcasts only arrive on the host network.
 host_network: true
@@ -25,12 +22,10 @@ ingress: true
 ingress_port: 0
 panel_icon: mdi:ev-station
 panel_title: Wallbox
-panel_admin: true
 # Direct access in the LAN (normal login, PWA on the phone, API for the Home Assistant integration).
 ports:
   8423/tcp: 8423
-webui: "http://[HOST]:[PORT:8423]/"
-watchdog: "http://[HOST]:[PORT:8423]/api/health"
+# health: the image's Docker HEALTHCHECK (/api/health); ingress replaces webui
 # Supervisor API: own info (ingress path / ports), network info, discovery.
 hassio_api: true
 # Core websocket through the Supervisor: which Home Assistant users are administrators (app roles).
